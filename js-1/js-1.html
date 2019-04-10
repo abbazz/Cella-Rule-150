@@ -1,0 +1,56 @@
+
+<!doctype html><html><head>
+<title>HTML Cella 150 Rule</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<h1>GKS</h1>
+<h2>Team Members: Abbasali Gulabiwala, Srikanth Kolli, Yash Shah</h2>
+<h3 id="timedata">Time-stamp: </h3>
+
+<canvas id="grid" width="400" height="400"></canvas>
+
+</body>
+<script src="../assets/draw-stuff.js"></script>
+<script>
+//This is HTML file  that calls the grid function of draw-stuff.js and generates timestamp
+
+// after "Introducing JavaScript Game Development" by Stuart.
+
+// =====================================================  draw_title ====
+// Draw filled rect.
+function draw_title( context ) 
+{
+    context.save( );
+    context.fillStyle = 'lightgrey';
+    context.font = "30px Arial";
+    //context.fillText( "Grid", 150, 140 );
+    context.restore( );
+}
+// =====================================================  Main ====
+  var canvas = document.getElementById( "grid" );
+  var context = canvas.getContext( "2d" );
+  //draw_rect( context );
+  // Draw a grid
+  //This function internally calls cella function that is required for this project
+  draw_grid( context, 10, 50, 'white', 'yellow' );
+  draw_title( context );
+
+  
+  //Function for  timestamp  
+function doDate()
+{
+    var str = "";
+
+    var months = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+
+    var now = new Date();
+
+    str += "Date: " + now.getDate() + " " + months[now.getMonth()] + " " + now.getFullYear() + " Time:  " + now.getHours() +":" + now.getMinutes() + ":" + now.getSeconds();
+    document.getElementById("timedata").innerHTML = str;
+}
+
+setInterval(doDate, 1000);
+
+</script>
+</html>
